@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct Mac_OS_screenshot_demoApp: App {
+struct Desktop_agent_demoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+
+            
         }
     }
 }
+
+    
