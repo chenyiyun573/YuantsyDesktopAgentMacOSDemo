@@ -11,6 +11,8 @@ struct ContentView: View {
     // @StateObject 属性包装器在 SwiftUI 中的作用是管理和维护一个 ObservableObject 的生命周期。它确保在 SwiftUI 视图中创建的对象在视图生命周期内保持一致，并在对象的状态发生变化时触发视图更新。
     @StateObject var vm = ScreencaptureViewModel()
     @StateObject var eventTapManager = EventTapManager()
+    let simulator = Simulator()
+    
     
     
     var body: some View {
@@ -43,6 +45,15 @@ struct ContentView: View {
                 Button("Make a full screenshot") {
                     vm.takeScreenshot(for: .full)
                 }
+                
+                // 添加一个新按钮来触发键盘输入模拟
+                Button("Type ' '") {
+                    simulator.handleCommand("sequence:caps lock+-")
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
         }
         .padding()

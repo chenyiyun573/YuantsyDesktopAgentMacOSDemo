@@ -51,13 +51,25 @@ class EventTapManager: ObservableObject {
             print("Event type: \(type.rawValue)")
         }
         
-        // 打印键盘按键代码
-        if type == .keyDown || type == .keyUp {
+        // 打印键盘按键代码并获取 Unicode 字符串
+        if type == .keyDown  {
             let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
             print("Key code: \(keyCode)")
+            
+            let maxStringLength = 4
+            var actualStringLength = 0
+            var unicodeString = [UniChar](repeating: 0, count: maxStringLength)
+            
+            event.keyboardGetUnicodeString(maxStringLength: maxStringLength, actualStringLength: &actualStringLength, unicodeString: &unicodeString)
+            
+            let characters = String(utf16CodeUnits: unicodeString, count: actualStringLength)
+            print("Characters: \(characters)")
+            
         }
         
-        // 打印鼠标代码
+
+        
+        // 打印鼠标按键情况
         if type == .leftMouseDown || type == .rightMouseDown {
             let mouseCode = event.getIntegerValueField(.mouseEventClickState)
             print("Mouse state: \(mouseCode)")
@@ -81,5 +93,4 @@ class EventTapManager: ObservableObject {
         // 返回事件（传递事件）
         return Unmanaged.passUnretained(event)
     }
-    
 }
