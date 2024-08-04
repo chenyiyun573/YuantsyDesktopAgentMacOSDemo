@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B08C4ED2C52A02B00B89D77 /* EventTapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */; };
+		2B125AFF2C57DDA6004B7645 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B125AFE2C57DDA6004B7645 /* Simulator.swift */; };
 		2B1647212C54F5E0005C618B /* Mouse_and_KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */; };
 		2BF668FE2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF668FD2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift */; };
 		2BF669002C4FFC7A00E6C830 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF668FF2C4FFC7A00E6C830 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapManager.swift; sourceTree = "<group>"; };
+		2B125AFE2C57DDA6004B7645 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse_and_KeyBoard.swift; sourceTree = "<group>"; };
 		2BF668FA2C4FFC7A00E6C830 /* Mac OS screenshot demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac OS screenshot demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF668FD2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mac_OS_screenshot_demoApp.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				2BF6690C2C4FFCF800E6C830 /* screencaptureViewModel.swift */,
 				2BF668FF2C4FFC7A00E6C830 /* ContentView.swift */,
 				2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */,
+				2B125AFE2C57DDA6004B7645 /* Simulator.swift */,
 				2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */,
 				2BF669012C4FFC7B00E6C830 /* Assets.xcassets */,
 				2BF669062C4FFC7B00E6C830 /* Mac_OS_screenshot_demo.entitlements */,
@@ -150,6 +153,7 @@
 			files = (
 				2BF669002C4FFC7A00E6C830 /* ContentView.swift in Sources */,
 				2BF668FE2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift in Sources */,
+				2B125AFF2C57DDA6004B7645 /* Simulator.swift in Sources */,
 				2B1647212C54F5E0005C618B /* Mouse_and_KeyBoard.swift in Sources */,
 				2B08C4ED2C52A02B00B89D77 /* EventTapManager.swift in Sources */,
 				2BF6690D2C4FFCF800E6C830 /* screencaptureViewModel.swift in Sources */,
