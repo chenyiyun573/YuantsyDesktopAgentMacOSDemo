@@ -64,7 +64,7 @@ class EventTapManager: ObservableObject {
         // Print the event type name if available
         if let eventName = manager.eventTypeNames[type] {
             // Uncomment to print event names
-            // print("Event type: \(eventName)")
+            print("Event type: \(eventName)")
         } else {
             print("Event type: \(type.rawValue)")
         }
@@ -173,6 +173,27 @@ class EventTapManager: ObservableObject {
             if fnDown != manager.fnKeyDown {
                 manager.fnKeyDown = fnDown
                 print("key-\(fnDown ? "down" : "up"): fn")
+            }
+        }
+
+        // Print mouse codes
+        if type == .leftMouseDown || type == .rightMouseDown {
+            let mouseCode = event.getIntegerValueField(.mouseEventClickState)
+            print("Mouse state: \(mouseCode)")
+        }
+        
+        // Monitor mouse position changes
+        if type == .mouseMoved {
+            let mouseLocation = event.location
+            
+            if manager.mouseStartPosition == nil {
+                manager.mouseStartPosition = mouseLocation
+            } else {
+                manager.mouseEndPosition = mouseLocation
+                // Print mouse start and end positions
+                print("Mouse moved from: \(manager.mouseStartPosition!) to \(manager.mouseEndPosition!)")
+                // Update start position to current end position
+                manager.mouseStartPosition = mouseLocation
             }
         }
         
