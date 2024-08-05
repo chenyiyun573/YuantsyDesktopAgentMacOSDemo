@@ -5,74 +5,74 @@ class Simulator {
     
     let keyCodeMapping = EventMasks.keyCodeMapping
     
+    // Function to simulate a key press event
     func simulateKeyPress(keyCode: CGKeyCode, keyDown: Bool) {
         if let event = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: keyDown) {
             event.post(tap: .cghidEventTap)
         }
     }
     
+    // Function to press a keyboard event with a given Unicode string
     func pressKeyboardEvent(unicodeString: String) {
-        // 确保字符串不空
+        // Ensure the string is not empty
         guard !unicodeString.isEmpty else { return }
 
-        // 将字符串转换为 UniChar 数组
+        // Convert the string to an array of UniChar
         let characters = Array(unicodeString.utf16)
         let stringLength = characters.count
 
-        // 创建一个键盘事件(key down)
+        // Create a keyboard event (key down)
         if let event = CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: true) {
             // Set the Unicode string for the event
             event.keyboardSetUnicodeString(stringLength: stringLength, unicodeString: characters)
 
-            // Post 事件(key down)
+            // Post the event (key down)
             event.post(tap: .cghidEventTap)
 
-            // 创建一个键盘事件(key up)
+            // Create a keyboard event (key up)
             if let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: false) {
-                // 设置事件的 Unicode 字符串
+                // Set the Unicode string for the event
                 keyUpEvent.keyboardSetUnicodeString(stringLength: stringLength, unicodeString: characters)
 
-                // Post 事件 (key up)
+                // Post the event (key up)
                 keyUpEvent.post(tap: .cghidEventTap)
             }
         }
     }
     
+    // Function to send a keyboard down event with a given Unicode string
     func sendKeyboardDownEvent(unicodeString: String) {
- 
+        // Ensure the string is not empty
         guard !unicodeString.isEmpty else { return }
 
-   
+        // Convert the string to an array of UniChar
         let characters = Array(unicodeString.utf16)
         let stringLength = characters.count
 
-
+        // Create and post the key down event
         if let event = CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: true) {
-      
             event.keyboardSetUnicodeString(stringLength: stringLength, unicodeString: characters)
-
             event.post(tap: .cghidEventTap)
         }
     }
     
+    // Function to send a keyboard up event with a given Unicode string
     func sendKeyboardUpEvent(unicodeString: String) {
-  
+        // Ensure the string is not empty
         guard !unicodeString.isEmpty else { return }
 
-
+        // Convert the string to an array of UniChar
         let characters = Array(unicodeString.utf16)
         let stringLength = characters.count
 
-
+        // Create and post the key up event
         if let event = CGEvent(keyboardEventSource: nil, virtualKey: 0, keyDown: false) {
-     
             event.keyboardSetUnicodeString(stringLength: stringLength, unicodeString: characters)
-
             event.post(tap: .cghidEventTap)
         }
     }
 
-
+    // Function to type a given string
     func typeString(_ string: String) {
         for character in string {
             print(character)
@@ -80,6 +80,7 @@ class Simulator {
         }
     }
 
+    // Function to handle commands in the format "action:argument"
     func handleCommand(_ command: String) {
         let components = command.split(separator: ":")
         guard components.count == 2 else {
@@ -96,12 +97,10 @@ class Simulator {
                 if keyCode <= 50 {
                     if argument == argument.uppercased() {
                         sendKeyboardDownEvent(unicodeString: argument.uppercased())
-                    }
-                    else {
+                    } else {
                         sendKeyboardDownEvent(unicodeString: argument)
                     }
-                }
-                else {
+                } else {
                     simulateKeyPress(keyCode: keyCode, keyDown: true)
                 }
             } else {
@@ -112,12 +111,10 @@ class Simulator {
                 if keyCode <= 50 {
                     if argument == argument.uppercased() {
                         sendKeyboardUpEvent(unicodeString: argument.uppercased())
-                    }
-                    else {
+                    } else {
                         sendKeyboardUpEvent(unicodeString: argument)
                     }
-                }
-                else {
+                } else {
                     simulateKeyPress(keyCode: keyCode, keyDown: false)
                 }
             } else {
@@ -128,13 +125,10 @@ class Simulator {
                 if keyCode <= 50 {
                     if argument == argument.uppercased() {
                         pressKeyboardEvent(unicodeString: argument.uppercased())
-                    }
-                    else {
+                    } else {
                         pressKeyboardEvent(unicodeString: argument)
                     }
-                }
-                
-                else {
+                } else {
                     simulateKeyPress(keyCode: keyCode, keyDown: true)
                     simulateKeyPress(keyCode: keyCode, keyDown: false)
                 }
@@ -160,6 +154,7 @@ class Simulator {
     }
 }
 
+// Extension to check if a character is a punctuation mark
 extension Character {
     var isPunctuation: Bool {
         return "!@#$%^&*()_+{}|:\"<>?[]\\;',./`~".contains(self)
