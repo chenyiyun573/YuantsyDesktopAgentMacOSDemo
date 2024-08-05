@@ -21,7 +21,7 @@ The **Mac OS Screenshot Demo App** is a Swift-based application designed to demo
 
 - Provide a simple user interface for interacting with the screenshot and event-handling features.
 
-  ![whiteboard_exported_image-2](/Users/mengxianze/Downloads/whiteboard_exported_image-2.png)
+  ![whiteboard_exported_image-2](/Users/mengxianze/Desktop/Mac OS screenshot demo/images/whiteboard_exported_image-2.png)
 
 ------
 
@@ -49,7 +49,7 @@ The **Mac OS Screenshot Demo App** is a Swift-based application designed to demo
    - The app will display the mouse and keyboard events in real-time.
    - If you want to simulate the keyboard, enter commands in the input box to simulate，the specific commands are in the Feishu document.
 
-   ![image-20240805131831764](/Users/mengxianze/Library/Application Support/typora-user-images/image-20240805131831764.png)
+   ![WeChatcf124e8bc2ca2bb6298ee074ff574bd3](/Users/mengxianze/Desktop/Mac OS screenshot demo/images/WeChatcf124e8bc2ca2bb6298ee074ff574bd3.jpg)
 
 ------
 
