@@ -131,6 +131,8 @@ class Simulator {
         return CGPoint(x: x, y: y)
     }
     
+    
+    
     func parseMultiClickPosition(_ argument: String) -> (CGPoint, Int)? {
         let components = argument.split(separator: ",")
         guard components.count == 3,
@@ -142,18 +144,55 @@ class Simulator {
         return (CGPoint(x: x, y: y), times)
     }
     
+    
+    func parseHoldClickPosition(_ argument: String) -> (CGPoint, String)? {
+        let components = argument.split(separator: ",")
+        guard components.count == 3,
+              let x = Double(components[0]),
+              let y = Double(components[1]) else {
+            return nil
+        }
+        let key = String(components[2])
+        return (CGPoint(x: x, y: y), key)
+    }
+    
     func getCurrentMouseLocation() -> CGPoint? {
         guard let event = CGEvent(source: nil) else {
             return nil
         }
         return event.location
     }
+    
+    func parseBatchCommands(_ argument: String) -> [String] {
+        // 将输入字符串按分号分割成各个命令
+        let commandStrings = argument.split(separator: ";").map { String($0) }
+        return commandStrings
+    }
+    
+    func simulateMouseScroll(amount: Double) {
+        if let location = getCurrentMouseLocation() {
+            if let scrollEvent = CGEvent(scrollWheelEvent2Source: nil, units: .pixel, wheelCount: 1, wheel1: Int32(amount), wheel2: 0, wheel3: 0) {
+                scrollEvent.location = location
+                scrollEvent.post(tap: .cghidEventTap)
+            }
+        }
+    }
+    
+    func simulateMoveMouse(to position: CGPoint) {
+        // Create a mouse move event
+        let moveEvent = CGEvent(mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: position, mouseButton: .left)
+        
+        // Post the event
+        moveEvent?.post(tap: .cghidEventTap)
+    }
 
     
 
     // Function to handle commands in the format "action:argument"
     func handleCommand(_ command: String) {
-        let components = command.split(separator: ":")
+        let components = command.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: false)
+        
+
         
         if command == "click" {
             if let currentMouseLocation = getCurrentMouseLocation() {
@@ -271,12 +310,52 @@ class Simulator {
                 print("Invalid position format: \(argument)")
             }
             
-        case"Multi-click":
+        case "Multi-click":
             if let (position, times) = parseMultiClickPosition(argument) {
                         simulateMouseClick(at: position, button: .left, clickCount: times)
                     } else {
                         print("Invalid position format: \(argument)")
                     }
+        case "scroll":
+            if let scrollAmount = Double(argument) {
+                simulateMouseScroll(amount: scrollAmount)
+            } else {
+                print("Invalid scroll amount: \(argument)")
+            }
+            
+        case "move":
+            if let position = parseClickPosition(argument) {
+                simulateMoveMouse(to: position)
+            }
+            
+        case "hold-click":
+            
+            if let (position, key) = parseHoldClickPosition(argument) {
+                print(key)
+                if let keyCode = keyCodeMapping[String(key)] {
+                    simulateKeyPress(keyCode: keyCode, keyDown: true)
+                }
+                simulateMoveMouse(to: position)
+                simulateMouseClick(at: position, button: .left)
+                if let keyCode = keyCodeMapping[String(key)] {
+                    simulateKeyPress(keyCode: keyCode, keyDown: false)
+                }
+                
+            }
+            
+        case"scroll-to" :
+            if let position = parseClickPosition(argument) {
+                simulateMoveMouse(to: position)
+            }
+            
+            simulateMouseScroll(amount: 300)
+            
+        case"batch" :
+            let commands = parseBatchCommands(argument)
+            
+            for command in commands {
+                handleCommand(command)
+            }
             
         default:
             print("Unknown action: \(action)")
