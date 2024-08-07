@@ -48,6 +48,7 @@ struct ContentView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .keyboardShortcut("S", modifiers: [.command]) // 添加快捷键 Cmd+S
             }
         }
         .padding()
