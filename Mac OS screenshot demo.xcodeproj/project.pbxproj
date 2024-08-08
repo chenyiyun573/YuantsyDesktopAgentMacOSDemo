@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B08C4ED2C52A02B00B89D77 /* EventTapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */; };
 		2B125AFF2C57DDA6004B7645 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B125AFE2C57DDA6004B7645 /* Simulator.swift */; };
 		2B1647212C54F5E0005C618B /* Mouse_and_KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */; };
 		2BF668FE2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF668FD2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift */; };
@@ -15,10 +14,12 @@
 		2BF669022C4FFC7B00E6C830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF669012C4FFC7B00E6C830 /* Assets.xcassets */; };
 		2BF669052C4FFC7B00E6C830 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF669042C4FFC7B00E6C830 /* Preview Assets.xcassets */; };
 		2BF6690D2C4FFCF800E6C830 /* screencaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6690C2C4FFCF800E6C830 /* screencaptureViewModel.swift */; };
+		4E0756CB2C64561B004DF6ED /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0756CA2C64561B004DF6ED /* Executor.swift */; };
+		4E0756CD2C6458C2004DF6ED /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0756CC2C6458C2004DF6ED /* Networking.swift */; };
+		4E0756CF2C645C6A004DF6ED /* EventTapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0756CE2C645C6A004DF6ED /* EventTapManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapManager.swift; sourceTree = "<group>"; };
 		2B125AFE2C57DDA6004B7645 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse_and_KeyBoard.swift; sourceTree = "<group>"; };
 		2BF668FA2C4FFC7A00E6C830 /* Mac OS screenshot demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac OS screenshot demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +29,9 @@
 		2BF669042C4FFC7B00E6C830 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2BF669062C4FFC7B00E6C830 /* Mac_OS_screenshot_demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mac_OS_screenshot_demo.entitlements; sourceTree = "<group>"; };
 		2BF6690C2C4FFCF800E6C830 /* screencaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screencaptureViewModel.swift; sourceTree = "<group>"; };
+		4E0756CA2C64561B004DF6ED /* Executor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
+		4E0756CC2C6458C2004DF6ED /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		4E0756CE2C645C6A004DF6ED /* EventTapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventTapManager.swift; path = ../EventTapManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +64,13 @@
 		2BF668FC2C4FFC7A00E6C830 /* Mac OS screenshot demo */ = {
 			isa = PBXGroup;
 			children = (
+				4E0756CA2C64561B004DF6ED /* Executor.swift */,
+				2B125AFE2C57DDA6004B7645 /* Simulator.swift */,
+				4E0756CC2C6458C2004DF6ED /* Networking.swift */,
+				4E0756CE2C645C6A004DF6ED /* EventTapManager.swift */,
 				2BF668FD2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift */,
 				2BF6690C2C4FFCF800E6C830 /* screencaptureViewModel.swift */,
 				2BF668FF2C4FFC7A00E6C830 /* ContentView.swift */,
-				2B08C4EC2C52A02B00B89D77 /* EventTapManager.swift */,
-				2B125AFE2C57DDA6004B7645 /* Simulator.swift */,
 				2B1647202C54F5E0005C618B /* Mouse_and_KeyBoard.swift */,
 				2BF669012C4FFC7B00E6C830 /* Assets.xcassets */,
 				2BF669062C4FFC7B00E6C830 /* Mac_OS_screenshot_demo.entitlements */,
@@ -153,10 +159,12 @@
 			files = (
 				2BF669002C4FFC7A00E6C830 /* ContentView.swift in Sources */,
 				2BF668FE2C4FFC7A00E6C830 /* Mac_OS_screenshot_demoApp.swift in Sources */,
+				4E0756CF2C645C6A004DF6ED /* EventTapManager.swift in Sources */,
 				2B125AFF2C57DDA6004B7645 /* Simulator.swift in Sources */,
+				4E0756CD2C6458C2004DF6ED /* Networking.swift in Sources */,
 				2B1647212C54F5E0005C618B /* Mouse_and_KeyBoard.swift in Sources */,
-				2B08C4ED2C52A02B00B89D77 /* EventTapManager.swift in Sources */,
 				2BF6690D2C4FFCF800E6C830 /* screencaptureViewModel.swift in Sources */,
+				4E0756CB2C64561B004DF6ED /* Executor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +299,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mac OS screenshot demo/Preview Content\"";
-				DEVELOPMENT_TEAM = 58C6JHHB2A;
+				DEVELOPMENT_TEAM = 8CJSCS52A6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -318,7 +326,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mac OS screenshot demo/Preview Content\"";
-				DEVELOPMENT_TEAM = 58C6JHHB2A;
+				DEVELOPMENT_TEAM = 8CJSCS52A6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
